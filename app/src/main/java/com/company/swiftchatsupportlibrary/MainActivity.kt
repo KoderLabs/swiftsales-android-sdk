@@ -13,6 +13,5 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button).setOnClickListener {
             SwiftChatActivity.launch(this)
         }
-
     }
 }
