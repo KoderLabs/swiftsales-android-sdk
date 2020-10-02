@@ -43,10 +43,10 @@ Add Swift Chat activity on your Manifest.xml file
 Add SwiftChatFAB on your layout
 
 ``` your_layout.xml
-    <com.swift.chat.library.SwiftChatFAB
-        android:id="@+id/swiftFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+<com.swift.chat.library.SwiftChatFAB
+    android:id="@+id/swiftFab"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### 4. Manually
@@ -54,11 +54,11 @@ Add SwiftChatFAB on your layout
 To open you chat activity manually
 
 ``` Java
-    SwiftChatActivity.launch(context);
+SwiftChatActivity.launch(context);
 ```
 
 ``` Kotlin
-    SwiftChatActivity.launch(context)
+SwiftChatActivity.launch(context)
 ```
 
 ## License
