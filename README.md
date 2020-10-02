@@ -1,5 +1,66 @@
 # Swift-Chat Andorid SDK
 
+## Get Started
+
+### 1. Gradle Dependency
+
+Add jitpack to your root build.gradle
+```gradle
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+Add SwiftChat SDK dependecy in app module build.gradle
+```gradle
+dependencies {
+    //Swift Chat SDK
+    implementation 'com.github.KoderLabs:swift-chat-:1.0.1'
+}
+```
+
+### 2. Manifest
+
+Add Swift Chat activity on your Manifest.xml file
+```Manifest.xml
+<application ....>
+    <activity android:name="com.swift.chat.library.SwiftChatActivity">
+    <meta-data
+        android:name="swift.chat.userId"
+        android:value="{your_user_id}" />
+    <meta-data
+        android:name="swift.chat.domain"
+        android:value="{your_domain_name}" />
+    </activity>
+</application>
+```
+
+### 3. Add Widget
+
+Add SwiftChatFAB on your layout
+
+``` your_layout.xml
+    <com.swift.chat.library.SwiftChatFAB
+        android:id="@+id/swiftFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+```
+
+### 4. Manually
+
+To open you chat activity manually
+
+``` Java
+    SwiftChatActivity.launch(context);
+```
+
+``` Kotlin
+    SwiftChatActivity.launch(context)
+```
+
 ## License
 ```
 MIT License
