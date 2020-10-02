@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="swift_chat_fab_color">#F39C12</color>
+    <color name="swift_chat_fab_color">@color/orange_700</color>
+
+    <color name="orange_700">#F39C12</color>
 </resources>
