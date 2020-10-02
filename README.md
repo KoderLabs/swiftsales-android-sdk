@@ -29,10 +29,10 @@ Add Swift Chat activity on your Manifest.xml file
 <application ....>
     <activity android:name="com.swift.chat.library.SwiftChatActivity">
     <meta-data
-        android:name="swift.chat.userId"
+        android:name="swiftchat.userId"
         android:value="{your_user_id}" />
     <meta-data
-        android:name="swift.chat.domain"
+        android:name="swiftchat.domain"
         android:value="{your_domain_name}" />
     </activity>
 </application>

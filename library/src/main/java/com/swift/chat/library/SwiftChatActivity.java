@@ -26,13 +26,13 @@ public class SwiftChatActivity extends AppCompatActivity {
         try {
             Bundle bundle = getPackageManager().getActivityInfo(getComponentName(), PackageManager.GET_META_DATA).metaData;
 
-            int userId = bundle.getInt("swift.chat.userId");
+            int userId = bundle.getInt("swiftchat.userId");
 
             if (userId <= 0) {
                 throw new IllegalArgumentException("Provide verified userId from swiftChat admin panel");
             }
 
-            String domain = bundle.getString("swift.chat.domain");
+            String domain = bundle.getString("swiftchat.domain");
 
             if (domain == null) {
                 throw new IllegalArgumentException("Provide verified domain name from swiftChat admin panel");

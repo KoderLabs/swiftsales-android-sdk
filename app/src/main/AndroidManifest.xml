@@ -20,10 +20,10 @@
         </activity>
         <activity android:name="com.swift.chat.library.SwiftChatActivity" >
             <meta-data
-                android:name="swift.chat.userId"
+                android:name="swiftchat.userId"
                 android:value="865" />
             <meta-data
-                android:name="swift.chat.domain"
+                android:name="swiftchat.domain"
                 android:value="files.shahzaibsheikh.com" />
         </activity>
     </application>
