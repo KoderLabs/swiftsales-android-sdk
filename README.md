@@ -56,7 +56,7 @@ Add SwiftChatFAB on your layout
 
 ### 4. Manually
 
-To open you chat activity manually
+To open chat activity manually
 
 ``` Java
 SwiftChatActivity.launch(context);
