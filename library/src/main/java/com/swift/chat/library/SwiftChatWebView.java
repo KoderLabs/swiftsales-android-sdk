@@ -4,20 +4,22 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.RestrictTo;
 import android.view.ViewGroup;
+import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 @RestrictTo(RestrictTo.Scope.LIBRARY)
 public class SwiftChatWebView {
-    private static WebView webView = null;
+    private WebView webView = null;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY)
-    public static WebView getWebView(
+    private static SwiftChatWebView INSTANCE = null;
+    private static Activity activity = null;
+
+    private SwiftChatWebView(
             Context applicationContext,
             int userId,
             String domain,
-            JavaScriptWebInterface javaScriptWebInterface,
             LoadingPageListener loadingPageListener
     ) {
         if (webView == null) {
@@ -29,9 +31,7 @@ public class SwiftChatWebView {
             webView.setLayoutParams(newLayoutParams);
             webView.getSettings().setJavaScriptEnabled(true);
             webView.getSettings().setDomStorageEnabled(true);
-            webView.addJavascriptInterface(javaScriptWebInterface, "Native");
             webView.loadUrl("https://dev-api.swiftchat.io/widget/script?WebsiteId=" + userId + "&Domain=" + domain + "&Integrate=true");
-
             loadingPageListener.pageLoading(true);
 
             webView.setWebViewClient(new WebViewClient() {
@@ -43,26 +43,44 @@ public class SwiftChatWebView {
                 }
             });
         }
+        webView.addJavascriptInterface(this, "Native");
 
-        return webView;
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.setAcceptCookie(true);
+        cookieManager.setAcceptThirdPartyCookies(webView, true);
+    }
+
+    @JavascriptInterface
+    public void onBackPressed() {
+        activity.finish();
+        activity = null;
+        webView.removeJavascriptInterface("Native");
+    }
+
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    public static WebView getWebView(
+            Context applicationContext,
+            int userId,
+            String domain,
+            Activity activity,
+            LoadingPageListener loadingPageListener
+    ) {
+        SwiftChatWebView.activity = activity;
+
+        if (INSTANCE == null) {
+            INSTANCE = new SwiftChatWebView(
+                    applicationContext,
+                    userId,
+                    domain,
+                    loadingPageListener
+            );
+        }
+
+        return INSTANCE.webView;
     }
 }
 
 @RestrictTo(RestrictTo.Scope.LIBRARY)
 interface LoadingPageListener {
     void pageLoading(boolean isLoading);
-}
-
-@RestrictTo(RestrictTo.Scope.LIBRARY)
-class JavaScriptWebInterface {
-    final Activity activity;
-
-    public JavaScriptWebInterface(Activity activity) {
-        this.activity = activity;
-    }
-
-    @JavascriptInterface
-    public void onBackPressed() {
-        activity.finish();
-    }
 }
