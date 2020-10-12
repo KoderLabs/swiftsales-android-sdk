@@ -45,7 +45,7 @@ public class SwiftChatActivity extends AppCompatActivity {
                     getApplicationContext(),
                     userId,
                     domain,
-                    new JavaScriptWebInterface(this),
+                    this,
                     isLoading -> {
                         if (isLoading) {
                             progressBar.setVisibility(View.VISIBLE);
