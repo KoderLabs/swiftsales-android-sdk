@@ -16,6 +16,8 @@ public class SwiftChatWebView {
     private static SwiftChatWebView INSTANCE = null;
     private static Activity activity = null;
 
+    private static String JAVASCRIPT_INTERFACE_NAME = "Native";
+
     private SwiftChatWebView(
             Context applicationContext,
             int userId,
@@ -43,7 +45,7 @@ public class SwiftChatWebView {
                 }
             });
         }
-        webView.addJavascriptInterface(this, "Native");
+        webView.addJavascriptInterface(this, JAVASCRIPT_INTERFACE_NAME);
 
         CookieManager cookieManager = CookieManager.getInstance();
         cookieManager.setAcceptCookie(true);
@@ -54,7 +56,7 @@ public class SwiftChatWebView {
     public void onBackPressed() {
         activity.finish();
         activity = null;
-        webView.removeJavascriptInterface("Native");
+        webView.removeJavascriptInterface(JAVASCRIPT_INTERFACE_NAME);
     }
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
