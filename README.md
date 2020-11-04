@@ -18,7 +18,7 @@ Add SwiftChat SDK dependecy in app module build.gradle
 ```gradle
 dependencies {
     //Swift Chat SDK
-    implementation 'io.swiftsales:swiftchat-android-sdk:1.0.1'
+    implementation 'io.swiftsales:swiftchat-android-sdk:1.1.0'
 }
 ```
 
