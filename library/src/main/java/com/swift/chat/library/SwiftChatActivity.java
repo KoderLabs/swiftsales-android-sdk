@@ -34,8 +34,8 @@ public class SwiftChatActivity extends AppCompatActivity {
     public ValueCallback<Uri[]> uploadMessage;
     public static final int REQUEST_SELECT_FILE = 100;
 
-    private static String KEY_MANIFEST_INT_WEBSITE_ID =  "swiftchat.websiteId";
-    private static String KEY_MANIFEST_INT_PACKAGE =  "swiftchat.package";
+    private static String KEY_MANIFEST_INT_WEBSITE_ID = "swiftchat.websiteId";
+    private static String KEY_MANIFEST_INT_PACKAGE = "swiftchat.package";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class SwiftChatActivity extends AppCompatActivity {
                     getApplicationContext(),
                     websiteId,
                     packageName,
-                    new JavaScriptWebInterface(this),
+                    this,
                     isLoading -> {
                         if (isLoading) {
                             progressBar.setVisibility(View.VISIBLE);

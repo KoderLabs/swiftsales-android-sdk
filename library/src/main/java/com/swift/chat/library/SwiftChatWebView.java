@@ -22,7 +22,6 @@ public class SwiftChatWebView {
             Context applicationContext,
             int websiteId,
             String packageName,
-            JavaScriptWebInterface javaScriptWebInterface,
             LoadingPageListener loadingPageListener
     ) {
         if (webView == null) {
@@ -34,7 +33,7 @@ public class SwiftChatWebView {
             webView.setLayoutParams(newLayoutParams);
             webView.getSettings().setJavaScriptEnabled(true);
             webView.getSettings().setDomStorageEnabled(true);
-            webView.addJavascriptInterface(javaScriptWebInterface, "Native");
+            webView.addJavascriptInterface(this, "Native");
             webView.loadUrl("https://dev-api.swiftchat.io/widget/script?WebsiteId=" + websiteId + "&Domain=" + packageName + "&Integrate=true");
             loadingPageListener.pageLoading(true);
 
