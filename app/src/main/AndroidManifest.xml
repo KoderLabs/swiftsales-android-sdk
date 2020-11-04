@@ -3,6 +3,7 @@
     package="com.company.swiftchatsupportlibrary">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -18,13 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.swift.chat.library.SwiftChatActivity" >
+        <activity android:name="com.swift.chat.library.SwiftChatActivity">
             <meta-data
-                android:name="swiftchat.userId"
-                android:value="865" />
+                android:name="swiftchat.websiteId"
+                android:value="877" />
             <meta-data
-                android:name="swiftchat.domain"
-                android:value="files.shahzaibsheikh.com" />
+                android:name="swiftchat.package"
+                android:value="www.daraz.pk" />
         </activity>
     </application>
 
