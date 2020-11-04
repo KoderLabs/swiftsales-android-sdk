@@ -18,14 +18,15 @@ Add SwiftChat SDK dependecy in app module build.gradle
 ```gradle
 dependencies {
     //Swift Chat SDK
-    implementation 'io.swiftsales:swiftchat-android-sdk:1.0.2'
+    implementation 'io.swiftsales:swiftchat-android-sdk:1.1.0'
 }
 ```
 
 ### 2. Manifest
 
-Add Internet Permission on your Manifest.xml file
+Add Internet and Read External Storage(For file attachement) Permission on your Manifest.xml file
 ```Manifest.xml
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
@@ -34,11 +35,11 @@ Add Swift Chat activity on your Manifest.xml file
 <application ....>
     <activity android:name="com.swift.chat.library.SwiftChatActivity">
     <meta-data
-        android:name="swiftchat.userId"
-        android:value="{your_user_id}" />
+        android:name="swiftchat.websiteId"
+        android:value="{your_website_id}" />
     <meta-data
-        android:name="swiftchat.domain"
-        android:value="{your_domain_name}" />
+        android:name="swiftchat.package"
+        android:value="{your_package_name}" />
     </activity>
 </application>
 ```
