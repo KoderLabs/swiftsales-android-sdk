@@ -22,10 +22,10 @@
         <activity android:name="com.swift.chat.library.SwiftChatActivity">
             <meta-data
                 android:name="swiftchat.websiteId"
-                android:value="877" />
+                android:value="175" />
             <meta-data
                 android:name="swiftchat.package"
-                android:value="www.daraz.pk" />
+                android:value="momentpin.com" />
         </activity>
     </application>
 

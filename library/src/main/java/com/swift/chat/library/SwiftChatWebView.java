@@ -34,7 +34,7 @@ public class SwiftChatWebView {
             webView.getSettings().setJavaScriptEnabled(true);
             webView.getSettings().setDomStorageEnabled(true);
             webView.addJavascriptInterface(this, "Native");
-            webView.loadUrl("https://dev-api.swiftchat.io/widget/script?WebsiteId=" + websiteId + "&Domain=" + packageName + "&Integrate=true");
+            webView.loadUrl("https://api.swiftchat.io/chat/widget/script?WebsiteId=" + websiteId + "&Domain=" + packageName + "&Integrate=true");
             loadingPageListener.pageLoading(true);
 
             webView.setWebViewClient(new WebViewClient() {
