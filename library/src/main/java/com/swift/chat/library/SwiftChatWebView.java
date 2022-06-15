@@ -2,10 +2,12 @@ package com.swift.chat.library;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.http.SslError;
 import android.support.annotation.RestrictTo;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -43,6 +45,11 @@ public class SwiftChatWebView {
                     super.onPageFinished(view, url);
 
                     loadingPageListener.pageLoading(false);
+                }
+
+                @Override
+                public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                    handler.proceed();
                 }
             });
         }
