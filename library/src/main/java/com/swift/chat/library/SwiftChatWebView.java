@@ -1,9 +1,10 @@
 package com.swift.chat.library;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.net.http.SslError;
-import android.support.annotation.RestrictTo;
+import androidx.annotation.RestrictTo;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
@@ -18,8 +19,9 @@ public class SwiftChatWebView {
     private static SwiftChatWebView INSTANCE = null;
     private static Activity activity = null;
 
-    private static String JAVASCRIPT_INTERFACE_NAME = "Native";
+    private static final String JAVASCRIPT_INTERFACE_NAME = "Native";
 
+    @SuppressLint("SetJavaScriptEnabled")
     private SwiftChatWebView(
             Context applicationContext,
             int websiteId,
@@ -36,20 +38,14 @@ public class SwiftChatWebView {
             webView.getSettings().setJavaScriptEnabled(true);
             webView.getSettings().setDomStorageEnabled(true);
             webView.addJavascriptInterface(this, "Native");
-            webView.loadUrl("https://api.swiftchat.io/chat/widget/script?WebsiteId=" + websiteId + "&Domain=" + packageName + "&Integrate=true");
+//            webView.loadUrl("https://api.swiftchat.io/chat/widget/script?WebsiteId=" + websiteId + "&Domain=" + packageName + "&Integrate=true");
             loadingPageListener.pageLoading(true);
 
             webView.setWebViewClient(new WebViewClient() {
                 @Override
                 public void onPageFinished(WebView view, String url) {
                     super.onPageFinished(view, url);
-
                     loadingPageListener.pageLoading(false);
-                }
-
-                @Override
-                public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                    handler.proceed();
                 }
             });
         }

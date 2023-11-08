@@ -2,8 +2,8 @@ package com.swift.chat.library;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 
 public class SwiftChatFAB extends FloatingActionButton {

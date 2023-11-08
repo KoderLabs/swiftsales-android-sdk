@@ -1,4 +1,3 @@
 include ':library'
-include ':chat'
 include ':app'
 rootProject.name = "Swift Chat Support Library"

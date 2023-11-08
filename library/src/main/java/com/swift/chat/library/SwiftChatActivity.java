@@ -1,30 +1,23 @@
 package com.swift.chat.library;
 
-import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Parcelable;
-import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-import android.webkit.ConsoleMessage;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import java.io.File;
 
 public class SwiftChatActivity extends AppCompatActivity {
 
@@ -34,8 +27,8 @@ public class SwiftChatActivity extends AppCompatActivity {
     public ValueCallback<Uri[]> uploadMessage;
     public static final int REQUEST_SELECT_FILE = 100;
 
-    private static String KEY_MANIFEST_INT_WEBSITE_ID = "swiftchat.websiteId";
-    private static String KEY_MANIFEST_INT_PACKAGE = "swiftchat.package";
+    private static final String KEY_MANIFEST_INT_WEBSITE_ID = "swiftchat.websiteId";
+    private static final String KEY_MANIFEST_INT_PACKAGE = "swiftchat.package";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,7 +88,6 @@ public class SwiftChatActivity extends AppCompatActivity {
                     }
                     return true;
                 }
-
             });
 
             root.addView(webView, 0);
@@ -112,6 +104,8 @@ public class SwiftChatActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
         if (requestCode == REQUEST_SELECT_FILE) {
             if (uploadMessage == null)
                 return;
